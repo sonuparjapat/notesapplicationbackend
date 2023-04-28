@@ -6,11 +6,8 @@ const { auth } = require("./Middlewares/Authmiddleware")
 const cors=require("cors")
 
 const app=express()
-app.use(cors({
-  origin: 'http://localhost:8080', // replace with your client-side origin
-  methods: ['GET', 'POST','DELETE','PUT','PATCH'], // replace with allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'] // replace with allowed headers
-}));
+app.use(cors())
+
 app.use(express.json())
 
 

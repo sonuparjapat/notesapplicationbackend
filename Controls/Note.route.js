@@ -42,6 +42,7 @@ noteRouter.delete("/delete/:id",async(req,res)=>{
             res.status(200).json({msg:"You are not authorised to do that"})
         }
         else{
+      
 await noteModel.findByIdAndDelete({_id:id})
 res.status(200).json({msg:"deleted successfully"})
         }

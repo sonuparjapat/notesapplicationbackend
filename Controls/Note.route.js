@@ -88,4 +88,22 @@ noteRouter.patch("/update/:id",async(req,res)=>{
         res.status(400).send({msg:err})
     }
 })
+noteRouter.put("/put/:id",async(req,res)=>{
+    const {id}=req.params
+    const noteid=await noteModel.findOne({_id:id})
+ console.log(noteid)
+
+    try{
+       
+        if(req.body.authorId!==noteid.authorId){
+            res.status(400).json({msg:"You are not authorised to do this"})
+        }
+        else{
+            await noteModel.findByIdAndUpdate({_id:id},req.body)
+            res.status(200).send({"msg":"updated successfully"})
+        }
+    }catch(err){
+        res.status(400).send({msg:err})
+    }
+})
 module.exports={noteRouter}

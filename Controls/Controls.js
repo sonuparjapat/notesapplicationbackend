@@ -47,7 +47,7 @@ try{
                 res.status(200).send({"msg":"login successfully","token":token,"status":"success"})
             }
             else{
-                res.status(400).json({msg:"wrong password","status":"error"})
+                res.status(400).json({msg:"wrong Credentials","status":"error"})
             }
            
         })

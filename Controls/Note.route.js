@@ -8,9 +8,9 @@ noteRouter.post("/create",async(req,res)=>{
     try{
         const data=new noteModel(req.body)
         await data.save()
-        res.status(200).json({msg:"addedsuccessfully",data:req.body,"status":"success"})
+        res.status(200).json({msg:"addedsuccessfully",data:req.body})
     }catch(err){
-        res.status(400).json({msg:err,"status":"error"})
+        res.status(400).json({msg:err})
     }
 
 })

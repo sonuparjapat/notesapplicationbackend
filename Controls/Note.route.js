@@ -28,9 +28,9 @@ noteRouter.get("/",async(req,res)=>{
   try{
     const notes= await noteModel.find({authorId:req.body.authorId})
  console.log(notes)
-res.status(200).json({data:notes})
+res.status(200).json({"data":notes,"msg":"This is your collection","status":"success"})
   } catch(err){
-    res.status(400).json({"err":err})
+    res.status(400).json({"err":err,"msg":"something going wrong","status":"error"})
   } 
 })
 noteRouter.delete("/delete/:id",async(req,res)=>{

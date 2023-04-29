@@ -43,7 +43,7 @@ try{
     if(user){
         bcrypt.compare(password, user.password, async(err, result)=> {
             if(result){
-                var token = jwt.sign({ authorId:user._id }, 'masai',{ expiresIn: 60 * 5 });
+                var token = jwt.sign({ authorId:user._id }, 'masai',{ expiresIn: 60 *60 });
                 res.status(200).send({"msg":"login successfully","token":token,"status":"success"})
             }
             else{

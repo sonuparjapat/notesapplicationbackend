@@ -1,7 +1,7 @@
 const express=require("express")
 const {userModel,connection}=require("./Models/UserModel")
 const { userRouter } = require("./Controls/Controls")
-const {noteRouter}=require("../Backend/Controls/Note.route")
+const {noteRouter}=require("./Controls/Note.route")
 const { auth } = require("./Middlewares/Authmiddleware")
 const cors=require("cors")
 

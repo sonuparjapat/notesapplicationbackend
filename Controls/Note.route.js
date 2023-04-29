@@ -53,6 +53,23 @@ res.status(200).json({msg:"deleted successfully"})
         res.status(400).json({"msg":"check"})
     }
 })
+noteRouter.get("/:id",async(req,res)=>{
+const {id}=req.params
+const noteid=await noteModel.findOne({_id:id})
+try{
+if(req.body.authorId!==noteid.authorId){
+    res.status(400).json({msg:"You are not a authorised person","status":"error"})
+}
+else{
+    const data=await noteModel.findOne({_id:id})
+    res.status(200).json({msg:"This Is Your Note","status":"success",note:data})
+}
+}catch(err){
+    res.status(400).json({msg:err.messgae,"status":"error"})
+}
+
+
+})
 noteRouter.patch("/update/:id",async(req,res)=>{
     const {id}=req.params
     const noteid=await noteModel.findOne({_id:id})

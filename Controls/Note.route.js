@@ -35,7 +35,9 @@ res.status(200).json({"data":notes,"msg":"This is your collection","status":"suc
 })
 noteRouter.delete("/delete/:id",async(req,res)=>{
     const {id}=req.params
-    const {note}=await noteModel.findOne({_id:id})
+
+    const note=await noteModel.findOne({_id:id})
+   
     try{
 
         if(req.body.authorId!==note.authorId){
@@ -48,12 +50,14 @@ res.status(200).json({msg:"deleted successfully"})
         }
 
     }catch(err){
-        res.status(400).json({err:err})
+        res.status(400).json({"msg":"check"})
     }
 })
 noteRouter.patch("/update/:id",async(req,res)=>{
     const {id}=req.params
     const noteid=await noteModel.findOne({_id:id})
+ console.log(noteid)
+
     try{
        
         if(req.body.authorId!==noteid.authorId){
